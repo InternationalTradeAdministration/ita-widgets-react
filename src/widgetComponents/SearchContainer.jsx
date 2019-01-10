@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { IoMdSearch } from 'react-icons/io'
 import Loader from 'react-loader-spinner';
 import widgetInfo from '../widgetInfo';
-import '../style.css';
+import '../ITAwidget.css';
 
 class SearchContainer extends Component {
   constructor() {
@@ -44,7 +44,7 @@ class SearchContainer extends Component {
       case "export_assistance_centers":
         return `&zip_codes=${this.state.queryString}`;
       case "international_office_locations":
-        return `&city=${this.state.queryString}&countries=${this.state.selected.value}`;
+        return `&q=${this.state.queryString}&countries=${this.state.selected.value}`;
       default: return null
     }
   }
