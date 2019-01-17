@@ -30,7 +30,7 @@
   margin-left: auto;
 }
 
-#widget-container > .root > h1 {
+.root > h1 {
   color: var(--theme-color);
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -110,6 +110,7 @@
 }
 
 .widget-container .resultsList {
+  color: black;
   border: 1px solid #ddd;
   border-top: 0;
   display: block;

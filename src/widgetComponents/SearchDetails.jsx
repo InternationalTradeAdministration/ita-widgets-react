@@ -3,15 +3,25 @@ import React, { Component } from 'react';
 class SearchDetails extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      toggleDetails: false,
-    };
+    this.state = { toggleDetails: false, };
   }
 
-  handleClick = () => {
-    this.setState({ 
-      toggleDetails: !this.state.toggleDetails 
-    });
+  handleClick = (e) => {
+    e.preventDefault();
+    this.setState({ toggleDetails: !this.state.toggleDetails, }, () => this.hideParentOfEmpty());
+  }
+
+  hideParentOfEmpty = () => {
+    let elem = document.querySelectorAll('td:empty');
+    if (elem.length) {
+      for (let el of elem) {
+        el.parentNode.style.display = 'none';
+      }
+    }
+  }
+
+  displayUrl = () => {
+    if (this.props.item.url) {return <a href={this.props.item.url} target="_blank" rel="noopener noreferrer">{this.props.item.url}</a>}
   }
 
   render() {
@@ -33,9 +43,9 @@ class SearchDetails extends Component {
           return (
               <table>
                 <tbody>
-                  <tr><td>Description</td><td>{this.props.item.description}</td></tr>
-                  <tr><td>URL</td><td><a href={this.props.item.url} target="_blank" rel="noopener noreferrer">{this.props.item.url}</a></td></tr>
-                  <tr><td>Contact</td><td>{this.props.item.contact}</td></tr>
+                  <tr><td>Agency</td><td>{this.props.item.agency}</td></tr>
+                  <tr><td>Description</td><td><div dangerouslySetInnerHTML={{__html: this.props.item.description}}></div></td></tr>
+                  <tr><td>URL</td><td>{this.displayUrl()}</td></tr>
                 </tbody>
               </table>
             );
@@ -49,7 +59,7 @@ class SearchDetails extends Component {
                 <tr><td>Start Date</td><td>{this.props.item.start_date}</td></tr>
                 <tr><td>End Date</td><td>{this.props.item.end_date}</td></tr>
                 <tr><td>Venues</td><td>{this.props.item.venues[0].location}</td></tr>
-                <tr><td>URL</td><td><a href={this.props.item.url} target="_blank" rel="noopener noreferrer">{this.props.item.url}</a></td></tr>
+                <tr><td>URL</td><td>{this.displayUrl()}</td></tr>
                 <tr><td>Source</td><td>{this.props.item.source}</td></tr>
               </tbody>
             </table>
@@ -83,14 +93,14 @@ class SearchDetails extends Component {
 
     return (
       <div>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <p><a href="#" title="Expand details table" aria-label="Expand details table" onClick={this.handleClick}>
-          {(this.props.endpoint==="export_assistance_centers") ? 
-            `${this.props.item.zip_code} - ${this.props.item.office_name}` : 
-            `${this.props[Object.keys(this.props)[0]]}` 
-          }</a></p>
-          
-          { this.state.toggleDetails ? detailsTable() : null}
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <p><a href="#" title="Expand details table" aria-label="Expand details table" onClick={this.handleClick}>
+        {(this.props.endpoint==="export_assistance_centers") ? 
+          `${this.props.item.zip_code} - ${this.props.item.office_name}` : 
+          `${this.props[Object.keys(this.props)[0]]}` 
+        }</a></p>
+        
+        { this.state.toggleDetails ? detailsTable() : null }
       </div>
     );
   }
