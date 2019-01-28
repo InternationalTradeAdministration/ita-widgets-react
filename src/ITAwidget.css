@@ -1,5 +1,5 @@
 :root {
-  --theme-color: #3b75cd;
+  --theme-color: #0000e2;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -73,6 +73,10 @@
   font-family: Arial, sans-serif;
 }
 
+.widget-container form input::placeholder {
+  color: #515151; 
+}
+
 .widget-container > form > button[type=submit] {
   display: inline-block;
   vertical-align: top;
@@ -94,6 +98,10 @@
   border-radius: 0;
   color: black;
   background-color: white;
+}
+
+.widget-container .react-select__placeholder {
+  color: #515151;
 }
 
 .widget-container > form > .Dropdown > div {

@@ -23,7 +23,7 @@ describe('consolidated screening list', () => {
     const titleElement = '#consolidated_screening_list > form > h3';
     const titleText = await page.$eval(titleElement, e => e.innerHTML);
     await page.waitForSelector(titleElement);
-    expect(titleText).toBe('Search the Consolidated Screening List:');
+    expect(titleText).toBe('Search the Consolidated Screening List');
   });
 
   test('searching returns results', async () => {
@@ -44,7 +44,7 @@ describe('trade leads', () => {
     const dropdownMenu = "#trade_leads > form > div.Dropdown";
     await page.waitForSelector(dropdownMenu);
     const titleText = await page.$eval(titleElement, e => e.innerHTML);
-    expect(titleText).toBe('Search Trade Leads:');
+    expect(titleText).toBe('Search Trade Leads');
   });
 
   test('searching with a text query returns results', async () => {
@@ -65,7 +65,7 @@ describe('trade events', () => {
     const dropdownMenu = "#trade_events > form > div.Dropdown";
     const titleText = await page.$eval(titleElement, e => e.innerHTML);    
     await page.waitForSelector(dropdownMenu);
-    expect(titleText).toBe('Search Trade Events:');
+    expect(titleText).toBe('Search Trade Events');
   });
 
   test('searching with a text query returns results', async () => {
@@ -84,7 +84,7 @@ describe('export assistance centers', () => {
   test('shows title', async ()=> {
     const titleElement = "#export_assistance_centers > form > h3";
     const titleText = await page.$eval(titleElement, e => e.innerHTML);    
-    expect(titleText).toBe('Search Export Assistance Centers:');
+    expect(titleText).toBe('Search Export Assistance Centers');
   });
 
   test('searching with a zipcode returns results', async () => {
@@ -105,7 +105,7 @@ describe('international office locations', () => {
     const dropdownMenu = "#international_office_locations > form > div.Dropdown";
     const titleText = await page.$eval(titleElement, e => e.innerHTML);    
     await page.waitForSelector(dropdownMenu);
-    expect(titleText).toBe('Search International Office Locations:');
+    expect(titleText).toBe('Search International Office Locations');
   });
 
   test('searching with a text query returns results', async () => {
