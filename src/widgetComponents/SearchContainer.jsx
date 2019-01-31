@@ -88,15 +88,18 @@ class SearchContainer extends Component {
     });
   }
 
+  placeholderText = () => widgetInfo[this.props.endpoint].placeholder || "Enter search query";
+
   render() {
     return (
       <div className="widget-container" id={this.props.endpoint}>
         <form onSubmit={(event) => this.handleSubmit(event)}>
-          <h3>Search {widgetInfo[this.props.endpoint].title}:</h3>
+          <h3 id="widget-title">Search {widgetInfo[this.props.endpoint].title}</h3>
           <input 
             type="text"
             name="queryString"
-            placeholder={widgetInfo[this.props.endpoint].placeholder || "Enter search query"}
+            aria-label={this.placeholderText()}
+            placeholder={this.placeholderText()}
             value={this.state.queryString}
             onChange={(event) => this.handleChange(event)}
           />
@@ -108,11 +111,14 @@ class SearchContainer extends Component {
             value={this.state.selected.value}
             className="Dropdown"
             classNamePrefix="react-select"
+            aria-label="Select Country"
             />
           ) : null }
-          <button type="submit"><IoMdSearch size="2em"/></button>
+          <button type="submit" aria-label="submit"><IoMdSearch size="2em"/></button>
         </form>
+
         { this.state.loading ? <div className="spinner"><Loader type="Bars" color="#00CC66" width="100" /></div> : null }
+
         { (this.state.submitted && !this.state.loading) ? 
           <SearchResults 
             className="results"
