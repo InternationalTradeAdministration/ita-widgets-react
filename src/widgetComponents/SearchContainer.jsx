@@ -25,7 +25,7 @@ class SearchContainer extends Component {
 
   _onSelect(option) {
     this.setState({selected: option});
-    console.log(`You selected ${option.label}, which has code ${option.value}`);
+    // console.log(`You selected ${option.label}, which has code ${option.value}`);
   }
   
   handleChange(event) {
@@ -52,7 +52,7 @@ class SearchContainer extends Component {
   fetchResults = () => {
     const targetUrl = `${widgetInfo.baseUrl+widgetInfo[this.props.endpoint].endpoint}?api_key=${this.props.API_KEY}${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
     
-    console.log(`Fetching from: ${targetUrl}`);
+    // console.log(`Fetching from: ${targetUrl}`);
     this.setState({loading: true, submitted: true}, () => {
       fetch(targetUrl)
       .then(response => response.json())

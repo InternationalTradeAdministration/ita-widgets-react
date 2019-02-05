@@ -8,14 +8,14 @@
 
     <script>     
       document.addEventListener("DOMContentLoaded", function() { 
-        endpoints = {
+        var endpoints = {
           "consolidated_screening_list": "consolidated_screening_list_widget",
           "trade_leads": "trade_leads_widget",
           "trade_events": "trade_events_widget",
           "export_assistance_centers": "export_assistance_centers_widget",
           "international_office_locations": "international_office_locations_widget",
         };
-        API_KEY = "ShCzzrAkXLpMTsTlhFhUjD29";
+        var API_KEY = "ShCzzrAkXLpMTsTlhFhUjD29";
         window.Explorer.renderWidget(endpoints, API_KEY);
       });
     </script>
