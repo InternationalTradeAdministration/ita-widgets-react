@@ -12,6 +12,7 @@ List of widgets:
 * International Office Locations
 
 ## Run locally
+  * Install Node.js (this app was developed with LTS v8.16.0).
   * Install dependencies with `npm install`.
   * Then, `npm run start` launches the app in development mode, with changes viewable at [http://localhost:3000](http://localhost:3000).  
     * The page will reload if you make edits.<br>
