@@ -1,33 +1,15 @@
 :root {
-  --theme-color: #2E6AFC;
+  --theme-color: #006699;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-@media (min-width: 768px) {
-  .root {
-    width: 750px;
-  }  
-}
-
-@media (min-width: 992) {
-  .root {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .root {
-    width: 1170px;
-  }
 }
 
 .root {
   border: 0.75px solid lightgray;
   align-items: center;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 0 1.5em 1.5em;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 5em;
 }
 
 .root > h1 {
@@ -51,7 +33,7 @@
   color: white;
   margin: 0;
   padding: 10px 15px;
-  width: 602px;
+  width: 600px;
   border-radius: 4px;
 }
 
@@ -71,6 +53,7 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   font-family: Arial, sans-serif;
+  color: black;
 }
 
 .widget-container form input::placeholder {
@@ -83,10 +66,14 @@
   position: relative;
   background-color: #c3d5f0;
   border: none;
-  height: 38px;
-  width: 38px;
+  height: 36px;
+  width: 36px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.widget-container > form > button[type=submit] svg {
+  padding-right: 5px;
 }
 
 .widget-container > form > .Dropdown {
@@ -105,11 +92,15 @@
 }
 
 .widget-container > form > .Dropdown > div {
-  height: 25px;
+  height: 36px;
   border: none;
   border-radius: 0;
   border-left: 1px dotted var(--theme-color);
   background-color: white;
+}
+
+.widget-container .react-select__control {
+  min-height: 1px;
 }
 
 .widget-container .react-select__menu-list {
@@ -222,28 +213,38 @@
   height: 40px;
   line-height: 26px;
   padding: 0 15px 0 10px;
-  width: 607px;
+  width: 600px;
   border-radius: 0 0 4px 4px;
 }
 
 .widget-container > .footer > ul.pagination {
   float: left;
-  margin-top: 5px;
+  margin: 5px;
 }
 
 .widget-container > .footer > ul.pagination > li {
-  display: inline;
+  display: inline-block;
+  position: relative;
   padding: 0px 5px;
   line-height: 26px;
 }
 
 .widget-container > .footer > ul.pagination > li.active {
   background-color: #11247D;
+  text-decoration: underline;
+}
+
+.widget-container > .footer > ul.pagination > li.active > a{
+  background-color: #11247D;
+  text-decoration: underline;
 }
 
 .widget-container > .footer > ul.pagination > li > a {
   text-decoration: none;
   color: white;
+  background-color: var(--theme-color);
+  border: none;
+  position: relative;
 }
 
 .widget-container > .footer > ul.pagination > li > a:hover {
@@ -255,8 +256,8 @@
   margin-top: 6px;
   margin-right: 20px;
   background-color: #c3d5f0;
+  color: var(--theme-color);
   border: none;
-  height: 24px;
 }
 
 .widget-container .spinner {
