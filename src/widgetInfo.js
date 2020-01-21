@@ -1,32 +1,30 @@
 export const widgetInfo  = {
 
-  baseUrl: "https://api.trade.gov",
-
   "consolidated_screening_list": {
     title: "the Consolidated Screening List",
-    endpoint: "/consolidated_screening_list/search",
+    endpoint: "/gateway/v1/consolidated_screening_list/search",
     moreInfo: "http://export.gov/ecr/eg_main_023148.asp",
   },
 
   "trade_leads": {
     title: "Trade Leads",
-    endpoint: "/v1/trade_leads/search",
+    endpoint: "/gateway/v1/trade_leads/search",
   },
 
   "trade_events": {
     title: "Trade Events",
-    endpoint: "/v1/trade_events/search",
+    endpoint: "/gateway/v1/trade_events/search",
   },
 
   "export_assistance_centers": {
     title: "Export Assistance Centers",
-    endpoint: "/ita_zipcode_to_post/search",
+    endpoint: "/gateway/v1/ita_zipcode_to_post/search",
     placeholder: "Enter ZIP code",
   },
 
   "international_office_locations": {
     title: "International Office Locations",
-    endpoint: "/ita_office_locations/search",
+    endpoint: "/gateway/v1/ita_office_locations/search",
     placeholder: "Enter city name",
   },
 

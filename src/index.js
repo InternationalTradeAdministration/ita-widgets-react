@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import SearchContainer from './widgetComponents/SearchContainer';
 import * as serviceWorker from './serviceWorker';
 
-function renderWidget(endpoints, API_KEY) {
+function renderWidget(endpoints) {
   for (const key of Object.keys(endpoints)) {
-    ReactDOM.render(<SearchContainer endpoint={key} API_KEY={API_KEY} />, document.getElementById(endpoints[key]));
+    ReactDOM.render(<SearchContainer endpoint={key} />, document.getElementById(endpoints[key]));
   }  
 }
 

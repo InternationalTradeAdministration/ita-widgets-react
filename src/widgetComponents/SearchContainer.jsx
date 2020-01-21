@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { IoMdSearch } from 'react-icons/io'
 import Loader from 'react-loader-spinner';
 import widgetInfo from '../widgetInfo';
+import config from '../config.js';
 import '../ITAwidget.css';
 
 class SearchContainer extends Component {
@@ -50,11 +51,13 @@ class SearchContainer extends Component {
   }
   
   fetchResults = () => {
-    const targetUrl = `${widgetInfo.baseUrl+widgetInfo[this.props.endpoint].endpoint}?api_key=${this.props.API_KEY}${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
+    const targetUrl = `${config.BASE_URL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
     
     // console.log(`Fetching from: ${targetUrl}`);
     this.setState({loading: true, submitted: true}, () => {
-      fetch(targetUrl)
+      fetch(targetUrl, {
+        headers: { 'Authorization': 'Bearer ' + config.ACCESS_TOKEN }
+      })
       .then(response => response.json())
       .then(response => this.setState({ 
           results: response.results,
