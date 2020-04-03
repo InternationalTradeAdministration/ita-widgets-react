@@ -1,0 +1,60 @@
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: ita-search-widgets
+  namespace: mdsnamespace
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate: 
+      maxSurge: 1 
+      maxUnavailable: 1 
+  minReadySeconds: 5  
+  template:
+    metadata:
+      labels:
+        app: ita-search-widgets
+    spec:
+      containers:
+      - name: ita-search-widgets
+        image: itadevacr.azurecr.io/ita-search-widgets/web:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ita-search-widgets
+  namespace: mdsnamespace
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+  selector:
+    app:  ita-search-widgets
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: ita-search-widgets
+  namespace: mdsnamespace
+spec:
+  rules:
+    - host: search-widgets-itadev2.vangos-cloudapp.us
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: ita-search-widgets
+              servicePort: 80
+  tls:
+    - hosts:
+        - search-widgets-itadev2.vangos-cloudapp.us
+      secretName: tls-secret

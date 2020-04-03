@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo az acr login --name dataservices
-sudo docker login dataservices.azurecr.io -u dataservices -p $AZURE_CONTAINER_KEY  #use container username and access key
-sudo docker build -t dataservices.azurecr.io/ita-search-widgets .
-sudo docker push dataservices.azurecr.io/ita-search-widgets:latest
+sudo az acr login --name $AZURE_CONTAINER_USER
+sudo docker login $AZURE_CONTAINER_USER.azurecr.io -u $AZURE_CONTAINER_USER -p $AZURE_CONTAINER_KEY  #use container username and access key
+sudo docker build -t $AZURE_CONTAINER_USER.azurecr.io/ita-search-widgets .
+sudo docker push $AZURE_CONTAINER_USER.azurecr.io/ita-search-widgets:latest
