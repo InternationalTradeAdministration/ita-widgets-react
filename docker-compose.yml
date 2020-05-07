@@ -1,0 +1,7 @@
+version: '3'
+services:
+  ita-search-widgets:
+    image: itadevacr.azurecr.io/ita-search-widgets/web:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
