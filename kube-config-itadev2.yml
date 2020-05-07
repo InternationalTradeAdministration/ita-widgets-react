@@ -47,7 +47,7 @@ metadata:
   namespace: mdsnamespace
 spec:
   rules:
-    - host: search-widgets-itadev2.vangos-cloudapp.us
+    - host: search-widgets-dev.trade.gov
       http:
         paths:
           - path: /
@@ -55,6 +55,4 @@ spec:
               serviceName: ita-search-widgets
               servicePort: 80
   tls:
-    - hosts:
-        - search-widgets-itadev2.vangos-cloudapp.us
-      secretName: tls-secret
+    - secretName: trade-gov-tls-secret
