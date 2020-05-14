@@ -3193,7 +3193,7 @@ footer .icon {
 }
 
 body.sticky-footer {
-  padding-bottom: 40px;
+  padding-bottom: 10em;
 }
 body.sticky-footer footer {
   position: absolute;
@@ -4053,7 +4053,7 @@ tbody.collapse.in {
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
-@media (min-width: 768px) {
+@media (min-width: 701px) {
   .navbar-toggle {
     display: none;
   }
@@ -4067,7 +4067,7 @@ tbody.collapse.in {
   padding-bottom: 10px;
   line-height: 20px;
 }
-@media (max-width: 767px) {
+@media (max-width: 700px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
@@ -5036,12 +5036,9 @@ a.thumbnail.active {
 
 .media,
 .media-body {
-  zoom: 1;
-  overflow: hidden;
-}
-
-.media-body {
-  width: 10000px;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .media-object {
