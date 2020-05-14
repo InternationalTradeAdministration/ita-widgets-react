@@ -20,8 +20,18 @@ class SearchDetails extends Component {
     }
   }
 
-  displayUrl = () => {
-    if (this.props.item.url) {return <a href={this.props.item.url} target="_blank" rel="noopener noreferrer">{this.props.item.url}</a>}
+  displayUrl = (url) => {
+    if ( Array.isArray(url) ) {
+      return url.map((u, i) => <div key={i}><a href={u}>{u}</a></div>)
+    } else if ( !!url && (url !== null) ) {
+      return <a href={url}>{url}</a>
+    }
+  }
+
+  displayVenues = (venues) => {
+    if ( Array.isArray(venues) ) {
+      return venues[0].location
+    }
   }
 
   render() {
@@ -45,7 +55,7 @@ class SearchDetails extends Component {
                 <tbody>
                   <tr><td>Agency</td><td>{this.props.item.agency}</td></tr>
                   <tr><td>Description</td><td><div dangerouslySetInnerHTML={{__html: this.props.item.description}}></div></td></tr>
-                  <tr><td>URL</td><td>{this.displayUrl()}</td></tr>
+                  <tr><td>URL</td><td>{this.displayUrl(this.props.item.url)}</td></tr>
                 </tbody>
               </table>
             );
@@ -58,8 +68,8 @@ class SearchDetails extends Component {
                 <tr><td>Description</td><td>{this.props.item.description}</td></tr>
                 <tr><td>Start Date</td><td>{this.props.item.start_date}</td></tr>
                 <tr><td>End Date</td><td>{this.props.item.end_date}</td></tr>
-                <tr><td>Venues</td><td>{this.props.item.venues[0].location}</td></tr>
-                <tr><td>URL</td><td>{this.displayUrl()}</td></tr>
+                <tr><td>Venues</td><td>{this.displayVenues(this.props.item.venues)}</td></tr>
+                <tr><td>URL</td><td>{this.displayUrl(this.props.item.url)}</td></tr>
                 <tr><td>Source</td><td>{this.props.item.source}</td></tr>
               </tbody>
             </table>
