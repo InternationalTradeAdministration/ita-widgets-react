@@ -3,8 +3,6 @@ apiVersion: apps/v1beta1
 metadata:
   name: ita-search-widgets
   namespace: mdsnamespace
-  labels:
-    app: ita-search-widgets
 spec:
   replicas: 1
   strategy:
@@ -19,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ita-search-widgets
-        image: dataservices.azurecr.io/ita-search-widgets:latest
+        image: itasharedappregistryprodeast1.azurecr.io/ita-search-widgets/web:#{Release.Artifacts._InternationalTradeAdministration.ita-widgets.BuildId}#
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -49,7 +47,7 @@ metadata:
   namespace: mdsnamespace
 spec:
   rules:
-    - host: <ip-dns-name>.<location>.cloudapp.azure.com
+    - host: search-widgets.trade.gov
       http:
         paths:
           - path: /
@@ -57,6 +55,4 @@ spec:
               serviceName: ita-search-widgets
               servicePort: 80
   tls:
-    - hosts:
-        - <ip-dns-name>.<location>.cloudapp.azure.com
-      secretName: tls-secret
+    - secretName: trade-gov-tls-secret
