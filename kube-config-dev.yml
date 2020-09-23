@@ -1,10 +1,13 @@
 kind: Deployment
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 metadata:
   name: ita-search-widgets
   namespace: mdsnamespace
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ita-search-widgets
   strategy:
     rollingUpdate: 
       maxSurge: 1 
