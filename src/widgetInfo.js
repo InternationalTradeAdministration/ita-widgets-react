@@ -3,7 +3,7 @@ export const widgetInfo  = {
   "consolidated_screening_list": {
     title: "the Consolidated Screening List",
     endpoint: "/gateway/v1/consolidated_screening_list/search",
-    moreInfo: "http://export.gov/ecr/eg_main_023148.asp",
+    moreInfo: "https://www.trade.gov/consolidated-screening-list",
   },
 
   "trade_leads": {

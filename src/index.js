@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import SearchContainer from './widgetComponents/SearchContainer';
 import * as serviceWorker from './serviceWorker';
 
-function renderWidget(endpoints) {
+function renderWidget(endpoints, access_token) {
   for (const key of Object.keys(endpoints)) {
-    ReactDOM.render(<SearchContainer endpoint={key} />, document.getElementById(endpoints[key]));
-  }  
+    console.log({access_token})
+    ReactDOM.render(<SearchContainer endpoint={key} ACCESS_TOKEN={access_token} />, document.getElementById(endpoints[key]));
+  }
 }
 
 export default renderWidget;

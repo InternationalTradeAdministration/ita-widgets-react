@@ -26,7 +26,6 @@ class SearchContainer extends Component {
 
   _onSelect(option) {
     this.setState({selected: option});
-    // console.log(`You selected ${option.label}, which has code ${option.value}`);
   }
   
   handleChange(event) {
@@ -52,11 +51,10 @@ class SearchContainer extends Component {
   
   fetchResults = () => {
     const targetUrl = `${config.BASE_URL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
-    
-    // console.log(`Fetching from: ${targetUrl}`);
+
     this.setState({loading: true, submitted: true}, () => {
       fetch(targetUrl, {
-        headers: { 'Authorization': 'Bearer ' + config.ACCESS_TOKEN }
+        headers: { 'Authorization': 'Bearer ' + this.props.ACCESS_TOKEN }
       })
       .then(response => response.json())
       .then(response => this.setState({ 
