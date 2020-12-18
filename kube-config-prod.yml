@@ -5,11 +5,14 @@ metadata:
   namespace: mdsnamespace
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ita-search-widgets
   strategy:
-    rollingUpdate: 
-      maxSurge: 1 
-      maxUnavailable: 1 
-  minReadySeconds: 5  
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
   template:
     metadata:
       labels:
@@ -35,7 +38,7 @@ spec:
   - name: http
     port: 80
   selector:
-    app:  ita-search-widgets
+    app: ita-search-widgets
 ---
 
 apiVersion: extensions/v1beta1
