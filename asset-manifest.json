@@ -4,6 +4,6 @@
   "main.js.map": "./static/js/widget.js.map",
   "static/css/widget.css.map": "./static/css/widget.css.map",
   "index.html": "./index.html",
-  "precache-manifest.af6518e0df89d52119e1256d2fdac05c.js": "./precache-manifest.af6518e0df89d52119e1256d2fdac05c.js",
+  "precache-manifest.d59c9762b07bf0eb07fea55a85438d27.js": "./precache-manifest.d59c9762b07bf0eb07fea55a85438d27.js",
   "service-worker.js": "./service-worker.js"
 }
