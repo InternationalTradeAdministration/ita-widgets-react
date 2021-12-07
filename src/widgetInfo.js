@@ -2,8 +2,8 @@ export const widgetInfo  = {
 
   "consolidated_screening_list": {
     title: "the Consolidated Screening List",
-    endpoint: "/gateway/v1/consolidated_screening_list/search",
-    moreInfo: "https://www.trade.gov/consolidated-screening-list",
+    endpoint: "/consolidated_screening_list/v1/search",
+    moreInfo: "https://developer.trade.gov/api-details#api=consolidated-screening-list",
   },
 
   "trade_leads": {

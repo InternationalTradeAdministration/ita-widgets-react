@@ -56,7 +56,7 @@ class SearchContainer extends Component {
     // console.log(`Fetching from: ${targetUrl}`);
     this.setState({loading: true, submitted: true}, () => {
       fetch(targetUrl, {
-        headers: { 'Authorization': 'Bearer ' + config.ACCESS_TOKEN }
+        headers: { 'subscription-key': config.SUBSCRIPTION_KEY }
       })
       .then(response => response.json())
       .then(response => this.setState({ 

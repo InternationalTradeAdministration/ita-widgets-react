@@ -2,7 +2,7 @@
 
 # Search Widgets for ITA
 
-These search widgets make it easy to browse the content of five APIs, and are available here: <https://developer.trade.gov/search-widgets.html>
+These search widgets make it easy to browse the content of five APIs, and are available here: <https://search-widgets.trade.gov/>
 
 List of widgets:
 
