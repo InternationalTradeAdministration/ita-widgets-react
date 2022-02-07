@@ -51,23 +51,39 @@ class SearchContainer extends Component {
   }
   
   fetchResults = () => {
-    const targetUrl = `${config.BASE_URL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
-    
-    // console.log(`Fetching from: ${targetUrl}`);
-    this.setState({loading: true, submitted: true}, () => {
-      fetch(targetUrl, {
-        headers: { 'subscription-key': config.SUBSCRIPTION_KEY }
+    if ( `${widgetInfo[this.props.endpoint].endpoint}`.includes("consolidated_screening_list") ) {
+      this.setState({loading: true, submitted: true}, () => {
+        const targetUrl = `${config.BASE_URL_CSL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
+        fetch(targetUrl, {
+          headers: { 'subscription-key': config.SUBSCRIPTION_KEY }
+        })
+        .then(response => response.json())
+        .then(response => this.setState({
+            results: response.results,
+            totalItemsCount: response.total,
+            loading: false,
+         }))
+        .catch(error => console.log(error), (error) => {
+          this.setState({loading: false, errorMessage: error});
+        })
       })
-      .then(response => response.json())
-      .then(response => this.setState({ 
-          results: response.results,
-          totalItemsCount: response.total,
-          loading: false,
-       }))
-      .catch(error => console.log(error), (error) => {
-        this.setState({loading: false, errorMessage: error});
+    } else {
+      this.setState({loading: true, submitted: true}, () => {
+        const targetUrl = `${config.BASE_URL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
+        fetch(targetUrl, {
+          headers: { 'Authorization': 'Bearer ' + config.ACCESS_TOKEN }
+        })
+        .then(response => response.json())
+        .then(response => this.setState({
+            results: response.results,
+            totalItemsCount: response.total,
+            loading: false,
+         }))
+        .catch(error => console.log(error), (error) => {
+          this.setState({loading: false, errorMessage: error});
+        })
       })
-    })
+    }
   }
 
   handleSubmit = event => {
