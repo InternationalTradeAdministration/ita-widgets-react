@@ -13,18 +13,18 @@ export const widgetInfo  = {
 
   "trade_events": {
     title: "Trade Events",
-    endpoint: "/gateway/v1/trade_events/search",
+    endpoint: "/trade_events/v1/search",
   },
 
   "export_assistance_centers": {
     title: "Export Assistance Centers",
-    endpoint: "/gateway/v1/ita_zipcode_to_post/search",
+    endpoint: "/ita_office_locations/v1/search",
     placeholder: "Enter ZIP code",
   },
 
   "international_office_locations": {
     title: "International Office Locations",
-    endpoint: "/gateway/v1/ita_office_locations/search",
+    endpoint: "/ita_office_locations/v1/search",
     placeholder: "Enter city name",
   },
 

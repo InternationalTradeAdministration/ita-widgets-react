@@ -43,7 +43,7 @@ class SearchContainer extends Component {
       case "trade_events":
         return `&q=${this.state.queryString}&countries=${this.state.selected.value}`;
       case "export_assistance_centers":
-        return `&zip_codes=${this.state.queryString}`;
+	return `&assigned_zip_codes=${this.state.queryString}`;
       case "international_office_locations":
         return `&q=${this.state.queryString}&countries=${this.state.selected.value}`;
       default: return null
@@ -56,6 +56,22 @@ class SearchContainer extends Component {
         const targetUrl = `${config.BASE_URL_CSL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
         fetch(targetUrl, {
           headers: { 'subscription-key': config.SUBSCRIPTION_KEY }
+        })
+        .then(response => response.json())
+        .then(response => this.setState({
+            results: response.results,
+            totalItemsCount: response.total,
+            loading: false,
+         }))
+        .catch(error => console.log(error), (error) => {
+          this.setState({loading: false, errorMessage: error});
+        })
+      })
+    } else if ( `${widgetInfo[this.props.endpoint].endpoint}`.includes("ita_office_locations") || `${widgetInfo[this.props.endpoint].endpoint}`.includes("trade_events") ) {
+      this.setState({loading: true, submitted: true}, () => {
+        const targetUrl = `${config.BASE_DEV2+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
+        fetch(targetUrl, {
+          headers: { 'subscription-key': config.SUBSCRIPTION_KEY_DEV2 }
         })
         .then(response => response.json())
         .then(response => this.setState({
