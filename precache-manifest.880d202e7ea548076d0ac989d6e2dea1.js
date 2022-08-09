@@ -8,7 +8,7 @@ self.__precacheManifest = [
     "url": "./static/css/widget.css"
   },
   {
-    "revision": "fb07f866f3d15828a493c3b724c3358e",
+    "revision": "396e3349f6470fa4d0bbe92809dafbdd",
     "url": "./index.html"
   }
 ];
