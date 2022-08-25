@@ -51,55 +51,21 @@ class SearchContainer extends Component {
   }
   
   fetchResults = () => {
-    if ( `${widgetInfo[this.props.endpoint].endpoint}`.includes("consolidated_screening_list") ) {
-      this.setState({loading: true, submitted: true}, () => {
-        const targetUrl = `${config.BASE_URL_AZ+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
-        fetch(targetUrl, {
-          headers: { 'subscription-key': config.SUBSCRIPTION_KEY_CSL }
-        })
-        .then(response => response.json())
-        .then(response => this.setState({
-            results: response.results,
-            totalItemsCount: response.total,
-            loading: false,
-         }))
-        .catch(error => console.log(error), (error) => {
-          this.setState({loading: false, errorMessage: error});
-        })
+    this.setState({loading: true, submitted: true}, () => {
+      const targetUrl = `${config.BASE_URL+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
+      fetch(targetUrl, {
+        headers: { 'subscription-key': config.SUBSCRIPTION_KEY }
       })
-    } else if ( `${widgetInfo[this.props.endpoint].endpoint}`.includes("ita_office_locations") || `${widgetInfo[this.props.endpoint].endpoint}`.includes("trade_events") ) {
-      this.setState({loading: true, submitted: true}, () => {
-        const targetUrl = `${config.BASE_URL_AZ+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
-        fetch(targetUrl, {
-          headers: { 'subscription-key': config.SUBSCRIPTION_KEY_AZ }
-        })
-        .then(response => response.json())
-        .then(response => this.setState({
-            results: response.results,
-            totalItemsCount: response.total,
-            loading: false,
-         }))
-        .catch(error => console.log(error), (error) => {
-          this.setState({loading: false, errorMessage: error});
-        })
+      .then(response => response.json())
+      .then(response => this.setState({
+          results: response.results,
+          totalItemsCount: response.total,
+          loading: false,
+       }))
+      .catch(error => console.log(error), (error) => {
+        this.setState({loading: false, errorMessage: error});
       })
-    } else {
-      this.setState({loading: true, submitted: true}, () => {
-        const targetUrl = `${config.BASE_URL_AWS+widgetInfo[this.props.endpoint].endpoint}?${this.queryParams()}&offset=${(this.state.activePage-1)*10}`;
-        fetch(targetUrl, {
-          headers: { 'Authorization': 'Bearer ' + config.ACCESS_TOKEN }
-        })
-        .then(response => response.json())
-        .then(response => this.setState({
-            results: response.results,
-            totalItemsCount: response.total,
-            loading: false,
-         }))
-        .catch(error => console.log(error), (error) => {
-          this.setState({loading: false, errorMessage: error});
-        })
-      })
-    }
+    })
   }
 
   handleSubmit = event => {
