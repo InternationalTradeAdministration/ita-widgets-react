@@ -8,7 +8,7 @@ export const widgetInfo  = {
 
   "trade_leads": {
     title: "Trade Leads",
-    endpoint: "/gateway/v1/trade_leads/search",
+    endpoint: "/trade_leads/v1/search",
   },
 
   "trade_events": {
